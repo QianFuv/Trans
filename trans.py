@@ -114,6 +114,12 @@ def create_context_menu(event, root):
     menu.add_command(label="清空", command=lambda: clear_entry(event, root))
     menu.post(event.x_root, event.y_root)
 
+# 返回列表顶部
+def return_to_top():
+    tree.selection_set(tree.get_children()[0])
+    tree.focus(tree.get_children()[0])
+    tree.see(tree.get_children()[0])
+
 # 在主函数中绑定上下文菜单到输入栏
 def main():
     global dictionary, entry, tree
@@ -144,6 +150,9 @@ def main():
 
     search_button = ttk.Button(frame, text="搜索", command=search)
     search_button.grid(row=0, column=1, padx=5, pady=5, sticky=tk.W)
+
+    top_button = ttk.Button(frame, text="返回顶部", command=return_to_top)
+    top_button.grid(row=0, column=2, padx=5, pady=5, sticky=tk.E)
 
     tree = ttk.Treeview(frame, columns=('Word', 'Meaning'), show='headings')
     tree.heading('Word', text='单词')
