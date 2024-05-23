@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 from tkinter import ttk, messagebox, Menu
 import json
@@ -5,7 +6,7 @@ import configparser
 import os
 import re
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
+script_dir = os.path.dirname(os.path.realpath(sys.executable))
 CONFIG_FILE = os.path.join(script_dir, 'gui_config.ini')
 file_path = os.path.join(script_dir, 'dict.json')
 
